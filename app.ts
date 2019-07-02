@@ -1,20 +1,25 @@
-let res = '';
+let res:any;
+
+let sum = prompt().localeCompare(0);
 
 class MyColl{
-    public values: string[] = [];
 
-    constructor() {
-        for(let i = 0; i < 3; i++){
-            let ask = prompt('value?');
-            this.values[i] = ask;
-        }
+    private values:Array<any> = [];
+
+    constructor(){
+        this.values[0] = sum;
+        this.values[1] = sum;
+        this.values[2] = sum;
     }
 
-    public *getVal(){
+    *getVal(){
         for(let i = 0; i < this.values.length; i++){
-            yield this.values[i] + ' ';
+            console.log(typeof this.values[i]);
+
+            yield this.values[i];
         }
     }
+
 }
 
 let iter = new MyColl().getVal();
